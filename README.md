@@ -25,12 +25,14 @@ Hieronder een overzicht van de technische vereisten en waar deze in de code zijn
 - **Callback functions**: Gebruikt in array-methodes zoals `.filter` en `.sort`.
 - **Promises**: De CoinGecko API wordt aangeroepen met `fetch` en verwerkt met `.then` en `async/await`.
 - **Async & Await**: Gebruikt in `displayCryptos` om data op te halen van de API (regel 34).
+- **Observer API (1 is voldoende)**: NOG INVULLEN!!
 
 ### Data & API
 - **Fetch om data op te halen**: Gebruikt in `displayCryptos` om data van de CoinGecko API op te halen (regel 34).
 - **JSON manipuleren en weergeven**: De API-respons wordt verwerkt en weergegeven in de tabel.
 
 ### Opslag & validatie
+- **Formulier validatie**: NOG INVULLEN!!
 - **Gebruik van LocalStorage**: Favorieten worden opgeslagen in `localStorage` en geladen bij het opstarten van de applicatie (regel 90).
 
 ### Styling & layout
