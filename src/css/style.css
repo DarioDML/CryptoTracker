@@ -410,6 +410,22 @@ html {
   visibility: hidden;
 }
 
+/* Highlight de tabel wanneer deze in beeld komt */
+#crypto-table.highlight {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 /* Responsive design voor kleinere schermen */
 @media (max-width: 768px) {
   #crypto-table th:nth-child(1), /* Verberg de kolom met het rangnummer */

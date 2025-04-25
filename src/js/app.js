@@ -161,6 +161,7 @@ let cryptoData = []; // globale array voor sortering
 // Pas data in na DOM-load
 document.addEventListener("DOMContentLoaded", () => {
   displayCryptos();
+  observeTableVisibility();
 });
 
 const filterButton = document.getElementById("filter-button");
@@ -211,3 +212,27 @@ const closeFilterModalButton = document.getElementById("close-filter-modal");
 closeFilterModalButton.addEventListener("click", () => {
   filterModal.classList.add("hidden");
 });
+
+// Functie om te observeren wanneer de tabel in beeld komt
+function observeTableVisibility() {
+  const table = document.getElementById("crypto-table");
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          console.log("De tabel is in beeld!");
+          table.classList.add("highlight"); // Voeg een klasse toe voor visuele feedback
+        } else {
+          table.classList.remove("highlight"); // Verwijder de klasse als de tabel uit beeld is
+        }
+      });
+    },
+    {
+      root: null, // Observeer binnen het viewport
+      threshold: 0.1, // Activeer wanneer 10% van de tabel zichtbaar is
+    }
+  );
+
+  observer.observe(table);
+}
