@@ -11,4 +11,4 @@
 
 # Screenshots
 
-# Gebruikte bronnen (inclusief deze chat)
+# Gebruikte bronnen
