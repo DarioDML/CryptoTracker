@@ -27,16 +27,48 @@ function createCryptoRow(coin, index) {
 }
 
 async function displayCryptos() {
-  const coins = await fetchCryptoData();
+  cryptoData = await fetchCryptoData();
+  renderTable(cryptoData);
+}
 
-  // Leegmaken voor opbouw
+document.querySelectorAll("th[data-sort]").forEach(th => {
+  th.style.cursor = "pointer";
+  th.addEventListener("click", () => {
+    const key = th.getAttribute("data-sort");
+    if (currentSort.key === key) {
+      currentSort.ascending = !currentSort.ascending;
+    } else {
+      currentSort.key = key;
+      currentSort.ascending = true;
+    }
+
+    const sortedData = [...cryptoData].sort((a, b) => {
+      const aValue = a[key] ?? 0;
+      const bValue = b[key] ?? 0;
+
+      return currentSort.ascending
+        ? aValue - bValue
+        : bValue - aValue;
+    });
+
+    renderTable(sortedData);
+  });
+});
+
+function renderTable(data) {
+  const tableBody = document.getElementById("crypto-table-body");
   tableBody.innerHTML = "";
-
-  // Rijen toevoegen
-  coins.forEach((coin, index) => {
+  data.forEach((coin, index) => {
     tableBody.innerHTML += createCryptoRow(coin, index);
   });
 }
+
+let currentSort = {
+  key: null,
+  ascending: true
+};
+
+let cryptoData = []; // globale array voor sortering
 
 // Pas data in na DOM-load
 document.addEventListener("DOMContentLoaded", () => {
