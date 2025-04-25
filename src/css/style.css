@@ -136,7 +136,7 @@ body {
 }
 
 [data-theme="dark"] .modern-input {
-  border: 2px solid var(--text-dark);
+  border: 2px solid var (--text-dark);
   background-color: var(--background-dark);
   color: var(--text-dark);
 }
@@ -176,6 +176,13 @@ body {
   padding: 0.75rem;
   text-align: left;
   font-size: 1rem;
+}
+
+/* Zorg ervoor dat de headers niet te breed worden */
+#crypto-table th {
+  white-space: nowrap; /* Voorkom dat de tekst op meerdere regels komt */
+  text-align: left; /* Zorg ervoor dat de tekst links uitgelijnd blijft */
+  padding: 0.5rem 1rem; /* Voeg wat padding toe voor consistentie */
 }
 
 #crypto-table tr:hover {
@@ -377,6 +384,34 @@ html {
 
 [data-theme="dark"] .input-group input:focus {
   border-color: var(--positive);
+}
+
+/* Zorg ervoor dat de header-inhoud netjes is uitgelijnd */
+.header-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Zorg ervoor dat de tekst en het pijltje ruimte delen */
+  gap: 0.5rem; /* Voeg wat ruimte toe tussen de tekst en het pijltje */
+}
+
+.sort-arrow {
+  font-size: 0.8rem;
+  visibility: hidden; /* Verberg standaard de pijltjes */
+}
+
+[data-sort-active="asc"] .sort-arrow::after {
+  content: "▲"; /* Pijltje omhoog voor stijgend */
+  visibility: visible;
+}
+
+[data-sort-active="desc"] .sort-arrow::after {
+  content: "▼"; /* Pijltje omlaag voor dalend */
+  visibility: visible;
+}
+
+[data-sort-active="none"] .sort-arrow::after {
+  content: ""; /* Geen pijltje voor ongesorteerd */
+  visibility: hidden;
 }
 
 /* Responsive design voor kleinere schermen */

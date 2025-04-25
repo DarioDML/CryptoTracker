@@ -41,23 +41,60 @@ document.querySelectorAll("th[data-sort]").forEach(th => {
   th.style.cursor = "pointer";
   th.addEventListener("click", () => {
     const key = th.getAttribute("data-sort");
-    if (currentSort.key === key) {
-      currentSort.ascending = !currentSort.ascending;
-    } else {
-      currentSort.key = key;
-      currentSort.ascending = true;
-    }
 
-    const sortedData = [...filteredCryptoData].sort((a, b) => {
-      const aValue = a[key] ?? 0;
-      const bValue = b[key] ?? 0;
-
-      return currentSort.ascending
-        ? aValue - bValue
-        : bValue - aValue;
+    // Reset sorteerstatus voor alle headers
+    document.querySelectorAll("th[data-sort]").forEach(header => {
+      header.setAttribute("data-sort-active", "none");
     });
 
-    renderTable(sortedData); // Render de gesorteerde data
+    // Update de huidige sorteerstatus
+    if (currentSort.key === key) {
+      if (currentSort.ascending === null) {
+        currentSort.ascending = true; // Eerste klik: stijgend
+      } else if (currentSort.ascending) {
+        currentSort.ascending = false; // Tweede klik: dalend
+      } else {
+        currentSort.key = null; // Derde klik: geen sortering
+        currentSort.ascending = null;
+      }
+    } else {
+      currentSort.key = key;
+      currentSort.ascending = true; // Start met stijgend sorteren
+    }
+
+    // Update de sorteerstatus in de header
+    if (currentSort.key) {
+      th.setAttribute("data-sort-active", currentSort.ascending ? "asc" : "desc");
+    } else {
+      th.setAttribute("data-sort-active", "none");
+    }
+
+    // Sorteer of herstel de originele data
+    let sortedData;
+    if (currentSort.key) {
+      sortedData = [...filteredCryptoData].sort((a, b) => {
+        let aValue = a[currentSort.key] ?? 0;
+        let bValue = b[currentSort.key] ?? 0;
+
+        // Special case for sorting by name (alphabetical)
+        if (currentSort.key === "name") {
+          aValue = aValue.toLowerCase();
+          bValue = bValue.toLowerCase();
+          return currentSort.ascending
+            ? aValue.localeCompare(bValue)
+            : bValue.localeCompare(aValue);
+        }
+
+        // Default numerical sorting
+        return currentSort.ascending
+          ? aValue - bValue
+          : bValue - aValue;
+      });
+    } else {
+      sortedData = [...cryptoData]; // Herstel de originele volgorde
+    }
+
+    renderTable(sortedData); // Render de data
   });
 });
 
