@@ -3,8 +3,11 @@ import './theme.js';
 import { fetchCryptoData } from './api.js';
 
 const tableBody = document.getElementById("crypto-table-body");
+let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+let showFavoritesOnly = false; // Track whether to show only favorites
 
 function createCryptoRow(coin, index) {
+  const isFavorite = favorites.includes(coin.id); // Check if the coin is a favorite
   return `
     <tr>
       <td>${coin.market_cap_rank}</td>
@@ -21,7 +24,9 @@ function createCryptoRow(coin, index) {
       <td class="${coin.ath_change_percentage >= 0 ? 'positive' : 'negative'}">
         ${coin.ath_change_percentage.toFixed(2)}%
       </td>
-      <td class="favorite-icon">☆</td>
+      <td class="favorite-icon" data-index="${index}">
+        ${isFavorite ? '★' : '☆'}
+      </td>
     </tr>
   `;
 }
@@ -57,11 +62,42 @@ document.querySelectorAll("th[data-sort]").forEach(th => {
 
 function renderTable(data) {
   const tableBody = document.getElementById("crypto-table-body");
-  tableBody.innerHTML = "";
+  tableBody.innerHTML = ""; // Clear the table
   data.forEach((coin, index) => {
-    tableBody.innerHTML += createCryptoRow(coin, index);
+    tableBody.innerHTML += createCryptoRow(coin, index); // Render rows
+  });
+  setupFavoriteListeners(); 
+}
+
+function setupFavoriteListeners() {
+  document.querySelectorAll('.favorite-icon').forEach(icon => {
+    icon.addEventListener('click', (event) => {
+      const index = event.target.getAttribute('data-index');
+      const coin = cryptoData[index];
+
+      if (favorites.includes(coin.id)) {
+        favorites = favorites.filter(fav => fav !== coin.id); // Remove from favorites
+      } else {
+        favorites.push(coin.id); // Add to favorites
+      }
+
+      localStorage.setItem('favorites', JSON.stringify(favorites)); // Save to localStorage
+      renderTable(cryptoData); // Re-render the table
+    });
   });
 }
+
+document.getElementById("favorites-toggle").addEventListener("click", () => {
+  showFavoritesOnly = !showFavoritesOnly;
+  const button = document.getElementById("favorites-toggle");
+  button.textContent = showFavoritesOnly ? "Show All" : "Show Favorites"; 
+
+  const filteredData = showFavoritesOnly
+    ? cryptoData.filter(coin => favorites.includes(coin.id)) // Filter favorites
+    : cryptoData; // Show all data
+
+  renderTable(filteredData); 
+});
 
 let currentSort = {
   key: null,
