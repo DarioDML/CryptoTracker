@@ -18,6 +18,9 @@
         />
         <button id="theme-toggle" class="modern-toggle">🌙</button>
         <button id="favorites-toggle" class="modern-button">Show Favorites</button>
+        <button id="filter-button" class="modern-button">
+          <span class="filter-icon">🔍</span> Filters
+        </button>
       </div>
     </header>
   
@@ -41,10 +44,43 @@
       </table>
 
       <footer class="footer-banner">
-
         Data provided by <a href="https://www.coingecko.com" target="_blank" rel="noopener noreferrer">CoinGecko</a>
       </footer>
     </main>
+
+    <div id="filter-modal" class="modal hidden">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2>Filters</h2>
+          <button id="close-filter-modal" class="close-button">✖</button>
+        </div>
+        <div class="filter-group">
+          <label for="market-cap-min">Market Cap (€):</label>
+          <div class="input-group">
+            <input type="number" id="market-cap-min" placeholder="Min" />
+            <input type="number" id="market-cap-max" placeholder="Max" />
+          </div>
+        </div>
+        <div class="filter-group">
+          <label for="price-change-min">Price Change (24h %):</label>
+          <div class="input-group">
+            <input type="number" id="price-change-min" placeholder="Min" />
+            <input type="number" id="price-change-max" placeholder="Max" />
+          </div>
+        </div>
+        <div class="filter-group">
+          <label for="volume-min">Volume (24h €):</label>
+          <div class="input-group">
+            <input type="number" id="volume-min" placeholder="Min" />
+            <input type="number" id="volume-max" placeholder="Max" />
+          </div>
+        </div>
+        <div class="filter-actions">
+          <button id="reset-filters" class="modern-button reset-button">Reset</button>
+          <button id="apply-filters" class="modern-button apply-button">Apply</button>
+        </div>
+      </div>
+    </div>
   
     <script type="module" src="/src/js/app.js"></script>
   </body>

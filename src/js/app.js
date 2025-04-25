@@ -123,3 +123,52 @@ let cryptoData = []; // globale array voor sortering
 document.addEventListener("DOMContentLoaded", () => {
   displayCryptos();
 });
+
+const filterButton = document.getElementById("filter-button");
+const filterModal = document.getElementById("filter-modal");
+const applyFiltersButton = document.getElementById("apply-filters");
+const resetFiltersButton = document.getElementById("reset-filters");
+
+filterButton.addEventListener("click", () => {
+  filterModal.classList.toggle("hidden"); // Toon of verberg het modaal
+});
+
+applyFiltersButton.addEventListener("click", () => {
+  const marketCapMin = parseFloat(document.getElementById("market-cap-min").value) || 0;
+  const marketCapMax = parseFloat(document.getElementById("market-cap-max").value) || Infinity;
+  const priceChangeMin = parseFloat(document.getElementById("price-change-min").value) || -Infinity;
+  const priceChangeMax = parseFloat(document.getElementById("price-change-max").value) || Infinity;
+  const volumeMin = parseFloat(document.getElementById("volume-min").value) || 0;
+  const volumeMax = parseFloat(document.getElementById("volume-max").value) || Infinity;
+
+  const filteredData = cryptoData.filter(coin => {
+    return (
+      coin.market_cap >= marketCapMin &&
+      coin.market_cap <= marketCapMax &&
+      coin.price_change_percentage_24h >= priceChangeMin &&
+      coin.price_change_percentage_24h <= priceChangeMax &&
+      coin.total_volume >= volumeMin &&
+      coin.total_volume <= volumeMax
+    );
+  });
+
+  renderTable(filteredData); // Re-render de tabel met gefilterde data
+  filterModal.classList.add("hidden"); // Verberg het modaal
+});
+
+resetFiltersButton.addEventListener("click", () => {
+  document.getElementById("market-cap-min").value = "";
+  document.getElementById("market-cap-max").value = "";
+  document.getElementById("price-change-min").value = "";
+  document.getElementById("price-change-max").value = "";
+  document.getElementById("volume-min").value = "";
+  document.getElementById("volume-max").value = "";
+
+  renderTable(cryptoData); // Toon alle data opnieuw
+});
+
+const closeFilterModalButton = document.getElementById("close-filter-modal");
+
+closeFilterModalButton.addEventListener("click", () => {
+  filterModal.classList.add("hidden");
+});
