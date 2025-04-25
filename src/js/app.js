@@ -7,7 +7,7 @@ const tableBody = document.getElementById("crypto-table-body");
 function createCryptoRow(coin, index) {
   return `
     <tr>
-      <td>${index + 1}</td>
+      <td>${coin.market_cap_rank}</td>
       <td class="coin-name">
         <img src="${coin.image}" alt="${coin.name}" class="coin-logo" />
         ${coin.name} (${coin.symbol.toUpperCase()})
