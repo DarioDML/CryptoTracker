@@ -35,8 +35,10 @@ body {
   padding: 0;
 }
 
-header {
+/* Header-styling */
+.header {
   display: flex;
+  flex-wrap: wrap; /* Zorg ervoor dat items naar een nieuwe regel gaan als er geen ruimte is */
   justify-content: space-between;
   align-items: center;
   padding: 1rem;
@@ -44,9 +46,22 @@ header {
   color: white;
 }
 
+.header-title {
+  flex: 1; /* Laat de titel meer ruimte innemen */
+  text-align: left;
+}
+
+.header-title h1 {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
 .header-buttons {
   display: flex;
-  gap: 1rem;
+  flex-wrap: wrap; /* Zorg ervoor dat knoppen naar een nieuwe regel gaan als er geen ruimte is */
+  gap: 0.5rem;
+  justify-content: flex-end; /* Plaats de knoppen aan de rechterkant */
+  align-items: center;
 }
 
 .modern-toggle {
@@ -160,6 +175,7 @@ header {
 #crypto-table td {
   padding: 0.75rem;
   text-align: left;
+  font-size: 1rem;
 }
 
 #crypto-table tr:hover {
@@ -226,6 +242,11 @@ header {
 
 .footer-banner a:hover {
   text-decoration: underline;
+}
+
+.footer-banner {
+  font-size: 0.8rem; /* Verklein de tekst op kleinere schermen */
+  padding: 0.5rem;
 }
 
 html {
@@ -350,11 +371,61 @@ html {
 
 [data-theme="dark"] .input-group input {
   background-color: var(--background-dark);
-  color: var(--text-dark);
+  color: var (--text-dark);
   border: 1px solid var(--text-dark);
 }
 
 [data-theme="dark"] .input-group input:focus {
   border-color: var(--positive);
+}
+
+/* Responsive design voor kleinere schermen */
+@media (max-width: 768px) {
+  #crypto-table th:nth-child(1), /* Verberg de kolom met het rangnummer */
+  #crypto-table td:nth-child(1),
+  #crypto-table th:nth-child(5), /* Verberg de kolom met marktkapitalisatie */
+  #crypto-table td:nth-child(5),
+  #crypto-table th:nth-child(6), /* Verberg de kolom met volume */
+  #crypto-table td:nth-child(6),
+  #crypto-table th:nth-child(7), /* Verberg de kolom met ATH % */
+  #crypto-table td:nth-child(7) {
+    display: none;
+  }
+
+  #crypto-table th,
+  #crypto-table td {
+    font-size: 0.9rem; /* Verklein de tekst */
+    padding: 0.5rem; /* Verminder de padding */
+  }
+
+  .header {
+    flex-direction: column; /* Stapel de header-items verticaal */
+    align-items: center;
+  }
+
+  .header-title {
+    text-align: center; /* Centreer de titel op kleinere schermen */
+    margin-bottom: 1rem;
+  }
+
+  .header-buttons {
+    justify-content: center; /* Centreer de knoppen op kleinere schermen */
+  }
+
+  .modern-input {
+    width: 100%; /* Zorg ervoor dat de zoekbalk de volledige breedte gebruikt */
+  }
+
+  .footer-banner {
+    text-align: center; /* Centreer de tekst op kleinere schermen */
+  }
+}
+
+@media (max-width: 480px) {
+  #crypto-table th,
+  #crypto-table td {
+    font-size: 0.8rem; /* Nog kleinere tekst voor zeer kleine schermen */
+  }
+
 }
 
