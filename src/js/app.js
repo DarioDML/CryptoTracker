@@ -99,6 +99,19 @@ document.getElementById("favorites-toggle").addEventListener("click", () => {
   renderTable(filteredData); 
 });
 
+document.getElementById("search-bar").addEventListener("input", (event) => {
+  const query = event.target.value.toLowerCase();
+
+  const filteredData = cryptoData.filter((coin) => {
+    return (
+      coin.name.toLowerCase().includes(query) ||
+      coin.symbol.toLowerCase().includes(query)
+    );
+  });
+
+  renderTable(filteredData); // Re-render the table with filtered data
+});
+
 let currentSort = {
   key: null,
   ascending: true

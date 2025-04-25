@@ -106,6 +106,30 @@ header {
   color: var(--background-dark);
 }
 
+.modern-input {
+  padding: 0.5rem;
+  border: 2px solid var(--text-light);
+  border-radius: 20px;
+  font-size: 1rem;
+  width: 250px;
+  transition: all 0.3s ease;
+}
+
+.modern-input:focus {
+  outline: none;
+  border-color: var(--background-light);
+}
+
+[data-theme="dark"] .modern-input {
+  border: 2px solid var(--text-dark);
+  background-color: var(--background-dark);
+  color: var(--text-dark);
+}
+
+[data-theme="dark"] .modern-input:focus {
+  border-color: var(--text-dark);
+}
+
 #crypto-table thead th {
   position: sticky;
   top: 0;
