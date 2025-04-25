@@ -251,10 +251,6 @@ body {
   text-decoration: underline;
 }
 
-.footer-banner {
-  font-size: 0.8rem; /* Verklein de tekst op kleinere schermen */
-  padding: 0.5rem;
-}
 
 html {
   transition: background-color 0.3s ease, color 0.3s ease;
