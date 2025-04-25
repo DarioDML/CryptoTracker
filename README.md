@@ -25,7 +25,9 @@ Hieronder een overzicht van de technische vereisten en waar deze in de code zijn
 - **Callback functions**: Gebruikt in array-methodes zoals `.filter` en `.sort`.
 - **Promises**: De CoinGecko API wordt aangeroepen met `fetch` en verwerkt met `.then` en `async/await`.
 - **Async & Await**: Gebruikt in `displayCryptos` om data op te halen van de API (regel 34).
-- **Observer API (1 is voldoende)**: NOG INVULLEN!!
+- **Observer API**: De **Intersection Observer API** wordt gebruikt om te detecteren wanneer de tabel (`#crypto-table`) en de footer (`.footer-banner`) in beeld komen:
+  - **Tabel**: Wanneer de tabel in beeld komt, wordt een visueel effect toegevoegd door de klasse `highlight` toe te voegen. Dit is geïmplementeerd in `app.js` (regel XXX).
+  - **Footer**: Wanneer de footer in beeld komt, wordt een melding in de console weergegeven. Dit is geïmplementeerd in `app.js` (regel XXX).
 
 ### Data & API
 - **Fetch om data op te halen**: Gebruikt in `displayCryptos` om data van de CoinGecko API op te halen (regel 34).
