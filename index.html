@@ -7,7 +7,35 @@
     <title>Vite App</title>
   </head>
   <body>
-    <div id="app"></div>
-    <script type="module" src="/src/main.js"></script>
+    <header class="header">
+      <h1>CryptoTracker</h1>
+      <button id="theme-toggle" class="theme-toggle">🌙</button>
+    </header>
+  
+    <main class="main">
+      <table id="crypto-table">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Naam</th>
+            <th>Prijs</th>
+            <th>24u %</th>
+            <th>Marktkap</th>
+            <th>Volume</th>
+            <th>ATH %</th>
+            <th>Favoriet</th>
+          </tr>
+        </thead>
+        <tbody id="crypto-table-body">
+          <!-- Rijen worden hier gegenereerd -->
+        </tbody>
+      </table>
+
+      <footer class="footer-banner">
+        Data provided by <a href="https://www.coingecko.com" target="_blank" rel="noopener noreferrer">CoinGecko</a>
+      </footer>
+    </main>
+  
+    <script type="module" src="/src/js/app.js"></script>
   </body>
 </html>
