@@ -76,6 +76,19 @@ header {
   text-align: left;
 }
 
+
+#crypto-table tr:hover{
+  background-color: #e5e7eb;
+}
+[data-theme="dark"] #crypto-table tr:hover {
+  background-color: #4b5563; /* A darker shade for dark mode */
+}
+
+#crypto-table td {
+  padding: 0.75rem;
+  text-align: left;
+}
+
 .coin-name {
   display: flex;
   align-items: center;
