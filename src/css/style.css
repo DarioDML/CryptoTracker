@@ -44,6 +44,68 @@ header {
   color: white;
 }
 
+.header-buttons {
+  display: flex;
+  gap: 1rem;
+}
+
+.modern-toggle {
+  background-color: var(--background-light);
+  border: 2px solid var(--text-light);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.modern-toggle:hover {
+  background-color: var(--text-light);
+  color: var(--background-light);
+}
+
+[data-theme="dark"] .modern-toggle {
+  background-color: var(--background-dark);
+  border: 2px solid var(--text-dark);
+  color: var(--text-dark);
+}
+
+[data-theme="dark"] .modern-toggle:hover {
+  background-color: var(--text-dark);
+  color: var(--background-dark);
+}
+
+.modern-button {
+  background-color: var(--background-light);
+  color: var(--text-light);
+  border: 2px solid var(--text-light);
+  border-radius: 20px;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.modern-button:hover {
+  background-color: var(--text-light);
+  color: var(--background-light);
+}
+
+[data-theme="dark"] .modern-button {
+  background-color: var(--background-dark);
+  color: var(--text-dark);
+  border: 2px solid var(--text-dark);
+}
+
+[data-theme="dark"] .modern-button:hover {
+  background-color: var(--text-dark);
+  color: var(--background-dark);
+}
+
 #crypto-table thead th {
   position: sticky;
   top: 0;
@@ -76,10 +138,10 @@ header {
   text-align: left;
 }
 
-
-#crypto-table tr:hover{
+#crypto-table tr:hover {
   background-color: #e5e7eb;
 }
+
 [data-theme="dark"] #crypto-table tr:hover {
   background-color: #4b5563; /* A darker shade for dark mode */
 }
@@ -128,5 +190,9 @@ header {
 
 .footer-banner a:hover {
   text-decoration: underline;
+}
+
+html {
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
