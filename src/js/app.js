@@ -5,6 +5,7 @@ import { fetchCryptoData } from './api.js';
 const tableBody = document.getElementById("crypto-table-body");
 let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
 let showFavoritesOnly = false; // Track whether to show only favorites
+let filteredCryptoData = []; // Houd de gefilterde data bij
 
 function createCryptoRow(coin, index) {
   const isFavorite = favorites.includes(coin.id); // Check if the coin is a favorite
@@ -47,7 +48,7 @@ document.querySelectorAll("th[data-sort]").forEach(th => {
       currentSort.ascending = true;
     }
 
-    const sortedData = [...cryptoData].sort((a, b) => {
+    const sortedData = [...filteredCryptoData].sort((a, b) => {
       const aValue = a[key] ?? 0;
       const bValue = b[key] ?? 0;
 
@@ -56,11 +57,12 @@ document.querySelectorAll("th[data-sort]").forEach(th => {
         : bValue - aValue;
     });
 
-    renderTable(sortedData);
+    renderTable(sortedData); // Render de gesorteerde data
   });
 });
 
 function renderTable(data) {
+  filteredCryptoData = data; // Update de gefilterde data
   const tableBody = document.getElementById("crypto-table-body");
   tableBody.innerHTML = ""; // Clear the table
   data.forEach((coin, index) => {
