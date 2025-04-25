@@ -24,7 +24,7 @@ function createCryptoRow(coin, index) {
       <td class="${coin.ath_change_percentage >= 0 ? 'positive' : 'negative'}">
         ${coin.ath_change_percentage.toFixed(2)}%
       </td>
-      <td class="favorite-icon" data-index="${index}">
+      <td class="favorite-icon ${isFavorite ? 'favorited' : ''}" data-index="${index}">
         ${isFavorite ? '★' : '☆'}
       </td>
     </tr>

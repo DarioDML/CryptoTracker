@@ -175,6 +175,7 @@ header {
   text-align: left;
 }
 
+
 .coin-name {
   display: flex;
   align-items: center;
@@ -188,6 +189,18 @@ header {
 
 .favorite-icon {
   cursor: pointer;
+  text-align: center; /* Zorgt ervoor dat de inhoud gecentreerd is */
+  vertical-align: middle; /* Centreert de knop verticaal */
+  display: flex; /* Gebruik flexbox voor betere uitlijning */
+  justify-content: center; /* Horizontaal centreren */
+  align-items: center; /* Verticaal centreren */
+  font-size: 1.5rem; /* Maak de ster groter indien nodig */
+  color: gray; /* Standaard kleur */
+  transition: color 0.3s ease;
+}
+
+.favorite-icon.favorited {
+  color: gold; /* Geel/goud wanneer gefavoriseerd */
 }
 
 .positive {
