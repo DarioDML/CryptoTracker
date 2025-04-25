@@ -44,6 +44,17 @@ header {
   color: white;
 }
 
+#crypto-table thead th {
+  position: sticky;
+  top: 0;
+  background-color: #e5e7eb;
+  z-index: 2;
+}
+
+[data-theme="dark"] #crypto-table thead th {
+  background-color: #374151;
+}
+
 #crypto-table {
   width: 100%;
   border-collapse: collapse;
