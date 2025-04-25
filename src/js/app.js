@@ -162,6 +162,7 @@ let cryptoData = []; // globale array voor sortering
 document.addEventListener("DOMContentLoaded", () => {
   displayCryptos();
   observeTableVisibility();
+  observeFooterVisibility();
 });
 
 const filterButton = document.getElementById("filter-button");
@@ -235,4 +236,24 @@ function observeTableVisibility() {
   );
 
   observer.observe(table);
+}
+
+function observeFooterVisibility() {
+  const footer = document.querySelector(".footer-banner");
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          console.log("De footer is in beeld!");
+        }
+      });
+    },
+    {
+      root: null,
+      threshold: 0.1,
+    }
+  );
+
+  observer.observe(footer);
 }
