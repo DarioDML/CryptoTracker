@@ -428,8 +428,6 @@ html {
 
 /* Responsive design voor kleinere schermen */
 @media (max-width: 768px) {
-  #crypto-table th:nth-child(1), /* Verberg de kolom met het rangnummer */
-  #crypto-table td:nth-child(1),
   #crypto-table th:nth-child(5), /* Verberg de kolom met marktkapitalisatie */
   #crypto-table td:nth-child(5),
   #crypto-table th:nth-child(6), /* Verberg de kolom met volume */
