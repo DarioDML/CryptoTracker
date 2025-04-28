@@ -141,7 +141,11 @@ document.getElementById("favorites-toggle").addEventListener("click", () => {
 document.getElementById("search-bar").addEventListener("input", (event) => {
   const query = event.target.value.toLowerCase();
 
-  const filteredData = cryptoData.filter((coin) => {
+  const baseData = showFavoritesOnly
+    ? cryptoData.filter(coin => favorites.includes(coin.id)) // Use only favorites if active
+    : cryptoData;
+
+  const filteredData = baseData.filter((coin) => {
     return (
       coin.name.toLowerCase().includes(query) ||
       coin.symbol.toLowerCase().includes(query)
