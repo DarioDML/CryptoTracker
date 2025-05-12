@@ -11,19 +11,19 @@ function createCryptoRow(coin, index) {
   const isFavorite = favorites.includes(coin.id); // Check if the coin is a favorite
   return `
     <tr>
-      <td>${coin.market_cap_rank}</td>
+      <td>${coin.market_cap_rank ?? '-'}</td>
       <td class="coin-name">
         <img src="${coin.image}" alt="${coin.name}" class="coin-logo" />
-        ${coin.name} (${coin.symbol.toUpperCase()})
+        ${coin.name} (${coin.symbol?.toUpperCase() ?? '-'})
       </td>
-      <td>€${coin.current_price.toLocaleString()}</td>
+      <td>€${coin.current_price?.toLocaleString() ?? '-'}</td>
       <td class="${coin.price_change_percentage_24h >= 0 ? 'positive' : 'negative'}">
-        ${coin.price_change_percentage_24h.toFixed(2)}%
+        ${coin.price_change_percentage_24h?.toFixed(2) ?? '-'}%
       </td>
-      <td>€${coin.market_cap.toLocaleString()}</td>
-      <td>€${coin.total_volume.toLocaleString()}</td>
+      <td>€${coin.market_cap?.toLocaleString() ?? '-'}</td>
+      <td>€${coin.total_volume?.toLocaleString() ?? '-'}</td>
       <td class="${coin.ath_change_percentage >= 0 ? 'positive' : 'negative'}">
-        ${coin.ath_change_percentage.toFixed(2)}%
+        ${coin.ath_change_percentage?.toFixed(2) ?? '-'}%
       </td>
       <td class="favorite-icon ${isFavorite ? 'favorited' : ''}" data-index="${index}">
         ${isFavorite ? '★' : '☆'}
@@ -34,6 +34,7 @@ function createCryptoRow(coin, index) {
 
 async function displayCryptos() {
   cryptoData = await fetchCryptoData();
+  console.log(`Aantal munten opgehaald: ${cryptoData.length}`);
   renderTable(cryptoData);
 }
 
@@ -72,7 +73,7 @@ document.querySelectorAll("th[data-sort]").forEach(th => {
     // Sorteer of herstel de originele data
     let sortedData;
     if (currentSort.key) {
-      sortedData = [...filteredCryptoData].sort((a, b) => {
+      sortedData = [...cryptoData].sort((a, b) => {
         let aValue = a[currentSort.key] ?? 0;
         let bValue = b[currentSort.key] ?? 0;
 
