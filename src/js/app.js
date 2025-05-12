@@ -66,8 +66,12 @@ document.querySelectorAll("th[data-sort]").forEach(th => {
     // Update de sorteerstatus in de header
     if (currentSort.key) {
       th.setAttribute("data-sort-active", currentSort.ascending ? "asc" : "desc");
+      th.querySelector(".arrow.up").classList.toggle("active", currentSort.ascending);
+      th.querySelector(".arrow.down").classList.toggle("active", !currentSort.ascending);
     } else {
       th.setAttribute("data-sort-active", "none");
+      th.querySelector(".arrow.up").classList.remove("active");
+      th.querySelector(".arrow.down").classList.remove("active");
     }
 
     // Sorteer of herstel de originele data
