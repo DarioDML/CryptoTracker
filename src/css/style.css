@@ -382,6 +382,16 @@ html {
   border-color: var(--positive);
 }
 
+[data-theme="dark"] .filter-group input {
+  background-color: var(--background-dark);
+  color: var(--text-dark);
+  border: 1px solid var(--text-dark);
+}
+
+[data-theme="dark"] .filter-group input::placeholder {
+  color: rgba(255, 255, 255, 0.6); /* Lichtere placeholder-kleur voor dark mode */
+}
+
 /* Zorg ervoor dat de header-inhoud netjes is uitgelijnd */
 .header-content {
   display: flex;
