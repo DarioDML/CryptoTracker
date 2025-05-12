@@ -16,7 +16,7 @@ function createCryptoRow(coin, index) {
         <img src="${coin.image}" alt="${coin.name}" class="coin-logo" />
         ${coin.name} (${coin.symbol?.toUpperCase() ?? '-'})
       </td>
-      <td>€${coin.current_price?.toLocaleString() ?? '-'}</td>
+      <td>€${coin.current_price > 0.01 ? coin.current_price?.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 8 }) : coin.current_price?.toFixed(8) ?? '-'}</td>
       <td class="${coin.price_change_percentage_24h >= 0 ? 'positive' : 'negative'}">
         ${coin.price_change_percentage_24h?.toFixed(2) ?? '-'}%
       </td>
