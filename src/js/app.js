@@ -77,7 +77,7 @@ document.querySelectorAll("th[data-sort]").forEach(th => {
     // Sorteer of herstel de originele data
     let sortedData;
     if (currentSort.key) {
-      sortedData = [...cryptoData].sort((a, b) => {
+      sortedData = [...filteredCryptoData].sort((a, b) => {
         let aValue = a[currentSort.key] ?? 0;
         let bValue = b[currentSort.key] ?? 0;
 
@@ -96,7 +96,7 @@ document.querySelectorAll("th[data-sort]").forEach(th => {
           : bValue - aValue;
       });
     } else {
-      sortedData = [...cryptoData]; // Herstel de originele volgorde
+      sortedData = [...filteredCryptoData]; // Herstel de originele volgorde binnen de filter
     }
 
     renderTable(sortedData); // Render de data
