@@ -67,6 +67,10 @@ Hieronder een overzicht van de technische vereisten en waar deze in de code zijn
    ```
 5. Open de applicatie in je browser via de link die Vite genereert.
 
+### Tutorial
+<img src="docs/Screenshots/Installatie_Instructies.gif" width="720"/>
+
+
 ## Screenshots
 ### Overzicht van de applicatie
 <img src="docs/Screenshots/Dashboard.png" width="720"/>
