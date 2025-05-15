@@ -7,17 +7,6 @@ import { isFavorite, toggleFavorite, favorites } from './favorites.js';
 
 export function createCryptoRow(coin, index) {
   const isFav = isFavorite(coin.id);
-  // Prijs: maximaal 6 cijfers totaal, altijd 2-6 decimalen, geen wetenschappelijke notatie
-  let price = '-';
-  if (typeof coin.current_price === 'number') {
-    if (coin.current_price >= 1) {
-      price = coin.current_price.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2, maximumSignificantDigits: 6 });
-    } else if (coin.current_price > 0) {
-      // Toon max 6 cijfers, dus bv. 0.000123, 0.012345, 0.00000123
-      const match = coin.current_price.toFixed(8).match(/^(0\.0*\d{0,6})/);
-      price = match ? match[1] : coin.current_price.toFixed(8);
-    }
-  }
   return `
     <tr>
       <td>${coin.market_cap_rank ?? '-'}</td>
@@ -25,7 +14,7 @@ export function createCryptoRow(coin, index) {
         <img src="${coin.image}" alt="${coin.name}" class="coin-logo" />
         ${coin.name} (${coin.symbol?.toUpperCase() ?? '-'})
       </td>
-      <td>€${price}</td>
+      <td>€${coin.current_price > 0.01 ? coin.current_price?.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 8 }) : coin.current_price?.toFixed(8) ?? '-'}</td>
       <td class="${coin.price_change_percentage_24h >= 0 ? 'positive' : 'negative'}">
         ${coin.price_change_percentage_24h?.toFixed(2) ?? '-'}%
       </td>
