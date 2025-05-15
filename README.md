@@ -36,7 +36,7 @@ Hieronder een overzicht van de technische vereisten en waar deze in de code zijn
 - **JSON manipuleren en weergeven**: De API-respons wordt verwerkt en weergegeven in de tabel via `renderTable` (`src/js/render.js`).
 
 ### Opslag & validatie
-- **Formulier validatie**: (NOG TOE TE VOEGEN indien gewenst, zie filtermodal in `index.html` en verwerking in `src/js/app.js`).
+- **Formulier validatie**: In `src/js/filters.js` wordt gecontroleerd of de ingevulde filterwaarden (zoals `marketCapMin`, `marketCapMax`, `priceChangeMin`, enz.) geldige getallen zijn voordat de filter wordt toegepast. Indien een veld leeg is, wordt een standaardwaarde gebruikt (bijvoorbeeld `0`, `Infinity` of `-Infinity`). Dit voorkomt fouten en zorgt ervoor dat alleen geldige filters worden toegepast.
 - **Gebruik van LocalStorage**: Favorieten worden opgeslagen in `localStorage` en geladen bij het opstarten van de applicatie (`src/js/favorites.js`).
 
 ### Styling & layout
@@ -46,7 +46,7 @@ Hieronder een overzicht van de technische vereisten en waar deze in de code zijn
 
 ### Tooling & structuur
 - **Project opgezet met Vite**: Het project maakt gebruik van Vite voor snelle ontwikkeling (`package.json`).
-- **Correcte folderstructuur**: HTML, CSS en JavaScript zijn gescheiden in de `src`-map. Modules: `app.js` (orchestratie), `favorites.js` (favorietenbeheer), `filters.js` (filterlogica), `sorting.js` (sorteerlogica), `render.js` (rendering), `observer.js` (observer functionaliteit), `theme.js` (thema), `api.js` (API).
+- **Correcte folderstructuur**: HTML, CSS en JavaScript zijn gescheiden in de `src`-map. Modules: `app.js` (algemeen), `favorites.js` (favorietenbeheer), `filters.js` (filterlogica), `sorting.js` (sorteerlogica), `render.js` (rendering), `observer.js` (observer functionaliteit), `theme.js` (thema), `api.js` (API).
 
 ## Installatie-instructies
 1. Clone de repository:
@@ -69,13 +69,13 @@ Hieronder een overzicht van de technische vereisten en waar deze in de code zijn
 
 ## Screenshots
 ### Overzicht van de applicatie
-*(Voeg hier een screenshot toe van de tabel met cryptocurrencies)*
+<img src="docs/Screenshots/Dashboard.png" width="128"/>
 
 ### Filtermodaal
-*(Voeg hier een screenshot toe van het filtermodaal)*
+<img src="docs/Screenshots/FilterMenu.jpeg" width="128"/>
 
 ### Favorietenweergave
-*(Voeg hier een screenshot toe van de favorietenfunctie)*
+<img src="docs/Screenshots/Dashboard_Favorites.png" width="128"/>
 
 ## Gebruikte bronnen
 - [CoinGecko API](https://www.coingecko.com/en/api)
