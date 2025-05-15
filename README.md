@@ -77,6 +77,16 @@ Hieronder een overzicht van de technische vereisten en waar deze in de code zijn
 ### Favorietenweergave
 <img src="docs/Screenshots/Dashboard_Favorites.png" width="720"/>
 
+## Functionaliteit
+### Zoekfunctie (GIF)
+<img src="docs/Screenshots/ZoekFunctie.gif" width="480"/>
+
+### Filterfunctie (GIF)
+<img src="docs/Screenshots/FilterFunctie.gif" width="480"/>
+
+### Favorietfunctie (GIF)
+<img src="docs/Screenshots/FavorietFunctie.gif" width="480"/>
+
 ## Gebruikte bronnen
 - [CoinGecko API](https://www.coingecko.com/en/api)
 - [MDN Web Docs](https://developer.mozilla.org/)
