@@ -6,6 +6,7 @@ const tableBody = document.getElementById("crypto-table-body");
 let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
 let showFavoritesOnly = false; // Track whether to show only favorites
 let filteredCryptoData = []; // Houd de gefilterde data bij
+let originalCryptoData = [];
 
 function createCryptoRow(coin, index) {
   const isFavorite = favorites.includes(coin.id); // Check if the coin is a favorite
@@ -34,6 +35,7 @@ function createCryptoRow(coin, index) {
 
 async function displayCryptos() {
   cryptoData = await fetchCryptoData();
+  originalCryptoData = [...cryptoData]; // Sla originele volgorde op
   console.log(`Aantal munten opgehaald: ${cryptoData.length}`);
   renderTable(cryptoData);
 }
@@ -96,7 +98,14 @@ document.querySelectorAll("th[data-sort]").forEach(th => {
           : bValue - aValue;
       });
     } else {
-      sortedData = [...filteredCryptoData]; // Herstel de originele volgorde binnen de filter
+      // Herstel de originele volgorde binnen de huidige filter
+      if (filteredCryptoData.length === originalCryptoData.length) {
+        sortedData = [...originalCryptoData];
+      } else {
+        // Filter opnieuw toepassen op originele volgorde
+        const ids = filteredCryptoData.map(c => c.id);
+        sortedData = originalCryptoData.filter(c => ids.includes(c.id));
+      }
     }
 
     renderTable(sortedData); // Render de data
