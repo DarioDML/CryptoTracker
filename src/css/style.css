@@ -11,6 +11,19 @@
   --negative: #dc2626;
 }
 
+html, body {
+  height: 100%;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  font-family: sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
 [data-theme="light"] {
   background-color: var(--background-light);
   color: var(--text-light);
@@ -29,10 +42,10 @@
   background-color: var(--table-dark);
 }
 
-body {
-  font-family: sans-serif;
-  margin: 0;
-  padding: 0;
+.main {
+  flex: 1 0 auto;
+  display: flex;
+  flex-direction: column;
 }
 
 /* Header-styling */
@@ -234,6 +247,7 @@ body {
 }
 
 .footer-banner {
+  margin-top: auto;
   background-color: var(--primary-bg, #3b82f6); /* matcht je headerkleur */
   color: white;
   text-align: center;
@@ -250,7 +264,6 @@ body {
 .footer-banner a:hover {
   text-decoration: underline;
 }
-
 
 html {
   transition: background-color 0.3s ease, color 0.3s ease;
