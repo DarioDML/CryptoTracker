@@ -1,3 +1,7 @@
+<p align="right">
+  <img src="public/LogoCryptoTracker.png" alt="CryptoTracker Logo" width="120" />
+</p>
+
 # CryptoTracker
 Interactive Single Page Application for Web Advanced
 
