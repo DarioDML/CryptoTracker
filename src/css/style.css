@@ -149,7 +149,7 @@ body {
 }
 
 [data-theme="dark"] .modern-input {
-  border: 2px solid var(--text-dark);
+  border: 2px solid var (--text-dark);
   background-color: var(--background-dark);
   color: var(--text-dark);
 }
@@ -453,7 +453,10 @@ html {
 @media (max-width: 768px) {
   #crypto-table {
     font-size: 0.9rem; /* Verklein de tekst voor kleinere schermen */
-    max-width: 100%; /* Zorg ervoor dat de tabel de volledige breedte gebruikt */
+    max-width: 100vw; /* Zorg dat de tabel nooit breder is dan het scherm */
+    width: 100vw; /* Forceer volledige schermbreedte */
+    overflow-x: auto;
+    box-sizing: border-box;
   }
 
   #crypto-table th:nth-child(5), /* Verberg de kolom met marktkapitalisatie */
@@ -503,6 +506,13 @@ html {
   #crypto-table th,
   #crypto-table td {
     font-size: 0.8rem; /* Nog kleinere tekst voor zeer kleine schermen */
+  }
+
+  #crypto-table {
+    max-width: 100vw;
+    width: 100vw;
+    overflow-x: auto;
+    box-sizing: border-box;
   }
 }
 
