@@ -55,7 +55,7 @@ Hieronder een overzicht van de technische vereisten en waar deze in de code zijn
    ```
 2. Navigeer naar de projectmap:
    ```bash
-   cd Project_WebAdvanced
+   cd CryptoTracker
    ```
 3. Installeer de benodigde dependencies:
    ```bash
