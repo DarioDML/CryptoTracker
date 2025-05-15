@@ -126,7 +126,7 @@ function setupFavoriteListeners() {
   document.querySelectorAll('.favorite-icon').forEach(icon => {
     icon.addEventListener('click', (event) => {
       const index = event.target.getAttribute('data-index');
-      const coin = cryptoData[index];
+      const coin = filteredCryptoData[index]; // Gebruik filteredCryptoData voor juiste context
 
       if (favorites.includes(coin.id)) {
         favorites = favorites.filter(fav => fav !== coin.id); // Remove from favorites
@@ -135,7 +135,14 @@ function setupFavoriteListeners() {
       }
 
       localStorage.setItem('favorites', JSON.stringify(favorites)); // Save to localStorage
-      renderTable(cryptoData); // Re-render the table
+
+      // Toon juiste lijst na update
+      if (showFavoritesOnly) {
+        const filteredData = cryptoData.filter(c => favorites.includes(c.id));
+        renderTable(filteredData);
+      } else {
+        renderTable(cryptoData);
+      }
     });
   });
 }
@@ -196,7 +203,12 @@ applyFiltersButton.addEventListener("click", () => {
   const volumeMin = parseFloat(document.getElementById("volume-min").value) || 0;
   const volumeMax = parseFloat(document.getElementById("volume-max").value) || Infinity;
 
-  const filteredData = cryptoData.filter(coin => {
+  let dataToFilter = cryptoData;
+  if (showFavoritesOnly) {
+    dataToFilter = cryptoData.filter(coin => favorites.includes(coin.id));
+  }
+
+  const filteredData = dataToFilter.filter(coin => {
     return (
       coin.market_cap >= marketCapMin &&
       coin.market_cap <= marketCapMax &&
