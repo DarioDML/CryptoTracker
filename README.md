@@ -51,7 +51,7 @@ Hieronder een overzicht van de technische vereisten en waar deze in de code zijn
 ## Installatie-instructies
 1. Clone de repository:
    ```bash
-   git clone <repository-url>
+   git clone https://github.com/DarioDML/CryptoTracker
    ```
 2. Navigeer naar de projectmap:
    ```bash
