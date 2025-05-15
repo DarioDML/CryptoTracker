@@ -104,7 +104,7 @@ body {
 
 [data-theme="dark"] .modern-toggle:hover {
   background-color: var(--text-dark);
-  color: var(--background-dark);
+  color: var(--background-light);
 }
 
 .modern-button {
@@ -451,6 +451,11 @@ html {
 
 /* Responsive design voor kleinere schermen */
 @media (max-width: 768px) {
+  #crypto-table {
+    font-size: 0.9rem; /* Verklein de tekst voor kleinere schermen */
+    max-width: 100%; /* Zorg ervoor dat de tabel de volledige breedte gebruikt */
+  }
+
   #crypto-table th:nth-child(5), /* Verberg de kolom met marktkapitalisatie */
   #crypto-table td:nth-child(5),
   #crypto-table th:nth-child(6), /* Verberg de kolom met volume */
@@ -464,6 +469,7 @@ html {
   #crypto-table td {
     font-size: 0.9rem; /* Verklein de tekst */
     padding: 0.5rem; /* Verminder de padding */
+    max-width: 100%;
   }
 
   .header {
@@ -487,6 +493,10 @@ html {
   .footer-banner {
     text-align: center; /* Centreer de tekst op kleinere schermen */
   }
+
+  .sort-arrows {
+    display: none !important;
+  }
 }
 
 @media (max-width: 480px) {
@@ -494,7 +504,6 @@ html {
   #crypto-table td {
     font-size: 0.8rem; /* Nog kleinere tekst voor zeer kleine schermen */
   }
-
 }
 
 .sort-arrows {
