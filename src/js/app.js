@@ -5,7 +5,6 @@ import { applyFilters } from './filters.js'; // Filterlogica
 import { sortData } from './sorting.js'; // Sorteerlogica
 import { createCryptoRow, renderTable } from './render.js'; // Rendering
 import { observeTableVisibility, observeFooterVisibility } from './observer.js'; // Observer API
-import '../css/style.css';
 import './theme.js';
 
 // Globale state-variabelen
