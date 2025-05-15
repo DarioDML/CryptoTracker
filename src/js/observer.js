@@ -1,3 +1,8 @@
+// observer.js - Observer functionaliteit voor CryptoTracker
+// Deze module bevat functies die gebruikmaken van de Intersection Observer API om zichtbaarheid van elementen (zoals tabel/footer) te detecteren.
+// Wordt gebruikt om UI-elementen dynamisch aan te passen op basis van zichtbaarheid (bijv. sticky footer).
+// Wordt geïnitialiseerd vanuit app.js bij het laden van de pagina.
+
 // observer.js
 // Intersection Observer functionaliteit
 

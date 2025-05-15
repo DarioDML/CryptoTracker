@@ -1,3 +1,8 @@
+// filters.js - Filterlogica voor CryptoTracker
+// Deze module bevat functies om de dataset te filteren op basis van gebruikersinput (market cap, prijsverandering, volume, ...).
+// De filterfunctie is puur: ze past de opgegeven filterwaarden toe op een dataset en geeft een nieuwe gefilterde array terug.
+// Wordt aangeroepen vanuit app.js bij het toepassen van filters in de UI.
+
 // filters.js
 // Filter functionaliteit
 

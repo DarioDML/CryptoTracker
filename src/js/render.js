@@ -1,5 +1,8 @@
-// render.js
-// Rendering van de tabel en setup van event listeners
+// render.js - Rendering voor CryptoTracker
+// Deze module bevat functies om de cryptotabel en rijen te genereren en te updaten in de DOM.
+// Scheidt de logica voor DOM-manipulatie van de rest van de applicatie.
+// Wordt aangeroepen vanuit app.js telkens als de tabel opnieuw gerenderd moet worden (na filteren, sorteren, ...).
+
 import { isFavorite, toggleFavorite, favorites } from './favorites.js';
 
 export function createCryptoRow(coin, index) {

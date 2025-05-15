@@ -1,4 +1,8 @@
-// theme.js
+// theme.js - Thema beheer voor CryptoTracker
+// Deze module regelt het wisselen tussen light en dark mode en slaat de gebruikersvoorkeur op in localStorage.
+// Bevat logica om het thema toe te passen op de UI en te onthouden bij volgende bezoeken.
+// Wordt automatisch geladen bij het opstarten van de app.
+
 const toggleButton = document.getElementById('theme-toggle');
 const html = document.documentElement;
 

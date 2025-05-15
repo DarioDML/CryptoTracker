@@ -1,29 +1,38 @@
+// Hoofdapplicatie CryptoTracker - regelt UI, events en orchestratie
 import { fetchCryptoData } from './api.js';
-import { favorites, isFavorite, toggleFavorite, getFavorites } from './favorites.js';
-import { applyFilters } from './filters.js';
-import { sortData } from './sorting.js';
-import { createCryptoRow, renderTable } from './render.js';
-import { observeTableVisibility, observeFooterVisibility } from './observer.js';
+import { favorites, isFavorite, toggleFavorite, getFavorites } from './favorites.js'; // Favorietenbeheer
+import { applyFilters } from './filters.js'; // Filterlogica
+import { sortData } from './sorting.js'; // Sorteerlogica
+import { createCryptoRow, renderTable } from './render.js'; // Rendering
+import { observeTableVisibility, observeFooterVisibility } from './observer.js'; // Observer API
 import '../css/style.css';
 import './theme.js';
 
-let showFavoritesOnly = false;
-let filteredCryptoData = [];
-let originalCryptoData = [];
-let cryptoData = [];
-let currentSort = { key: null, ascending: true };
+// Globale state-variabelen
+let showFavoritesOnly = false; // Of alleen favorieten getoond worden
+let filteredCryptoData = [];   // Huidige gefilterde dataset
+let originalCryptoData = [];   // Originele volgorde van data
+let cryptoData = [];           // Volledige dataset
+let currentSort = { key: null, ascending: true }; // Huidige sorteertoestand
 
+// Synchroniseer filteredCryptoData en render de tabel
 function renderTableWithSync(data, setupFavoriteListeners) {
   filteredCryptoData = data;
   renderTable(data, setupFavoriteListeners);
 }
 
+// Haal data op van de API en toon in tabel
 async function displayCryptos() {
   cryptoData = await fetchCryptoData();
   originalCryptoData = [...cryptoData];
   renderTableWithSync(cryptoData, setupFavoriteListeners);
 }
 
+// Sorteerfunctionaliteit voor alle kolommen
+// Regelt 3-standen sorteren: oplopend, aflopend, ongesorteerd
+// Houdt rekening met gefilterde data
+// Update sorteerpijltjes in de header
+// Synchroniseert filteredCryptoData
 document.querySelectorAll('th[data-sort]').forEach(th => {
   th.style.cursor = 'pointer';
   th.addEventListener('click', () => {
@@ -69,6 +78,8 @@ document.querySelectorAll('th[data-sort]').forEach(th => {
   });
 });
 
+// Koppel click-events aan favorietensterren
+// Werkt correct met filters en favorieten-tabblad
 function setupFavoriteListeners() {
   document.querySelectorAll('.favorite-icon').forEach(icon => {
     icon.addEventListener('click', (event) => {
@@ -87,6 +98,7 @@ function setupFavoriteListeners() {
   });
 }
 
+// Toggle favorieten-tabblad (toon alles of alleen favorieten)
 document.getElementById('favorites-toggle').addEventListener('click', () => {
   showFavoritesOnly = !showFavoritesOnly;
   const button = document.getElementById('favorites-toggle');
@@ -97,6 +109,7 @@ document.getElementById('favorites-toggle').addEventListener('click', () => {
   renderTableWithSync(filteredData, setupFavoriteListeners);
 });
 
+// Zoekfunctionaliteit op naam of symbool
 document.getElementById('search-bar').addEventListener('input', (event) => {
   const query = event.target.value.toLowerCase();
   let dataToFilter = showFavoritesOnly
@@ -111,16 +124,18 @@ document.getElementById('search-bar').addEventListener('input', (event) => {
   renderTableWithSync(filteredData, setupFavoriteListeners);
 });
 
-// Filter functionaliteit
+// Filtermodal: open/close, toepassen en resetten
 const filterButton = document.getElementById('filter-button');
 const filterModal = document.getElementById('filter-modal');
 const applyFiltersButton = document.getElementById('apply-filters');
 const resetFiltersButton = document.getElementById('reset-filters');
 
+// Open filtermodal
 filterButton.addEventListener('click', () => {
   filterModal.classList.toggle('hidden');
 });
 
+// Pas filters toe op huidige dataset (enkel favorieten indien actief)
 applyFiltersButton.addEventListener('click', () => {
   const marketCapMin = parseFloat(document.getElementById('market-cap-min').value) || 0;
   const marketCapMax = parseFloat(document.getElementById('market-cap-max').value) || Infinity;
@@ -143,6 +158,7 @@ applyFiltersButton.addEventListener('click', () => {
   filterModal.classList.add('hidden');
 });
 
+// Reset filters naar standaardwaarden
 resetFiltersButton.addEventListener('click', () => {
   document.getElementById('market-cap-min').value = '';
   document.getElementById('market-cap-max').value = '';
@@ -153,11 +169,13 @@ resetFiltersButton.addEventListener('click', () => {
   renderTableWithSync(cryptoData, setupFavoriteListeners);
 });
 
+// Sluit filtermodal
 const closeFilterModalButton = document.getElementById('close-filter-modal');
 closeFilterModalButton.addEventListener('click', () => {
   filterModal.classList.add('hidden');
 });
 
+// Initialisatie: haal data op en start observers
 document.addEventListener('DOMContentLoaded', () => {
   displayCryptos();
   observeTableVisibility();

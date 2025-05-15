@@ -1,5 +1,7 @@
-// sorting.js
-// Sorteer functionaliteit
+// sorting.js - Sorteerlogica voor CryptoTracker
+// Deze module bevat functies om de dataset te sorteren op verschillende kolommen (naam, prijs, market cap, ...).
+// De sorteerfunctie is generiek en ondersteunt oplopend/aflopend sorteren op elke property.
+// Wordt aangeroepen vanuit app.js bij het sorteren van de tabel.
 
 export function sortData(data, sortKey, ascending) {
   if (!sortKey) return data;
