@@ -79,13 +79,13 @@ Hieronder een overzicht van de technische vereisten en waar deze in de code zijn
 
 ## Functionaliteit
 ### Zoekfunctie (GIF)
-<img src="docs/Screenshots/ZoekFunctie.gif" width="480"/>
+<img src="docs/Screenshots/ZoekFunctie.gif" width="720"/>
 
 ### Filterfunctie (GIF)
-<img src="docs/Screenshots/FilterFunctie.gif" width="480"/>
+<img src="docs/Screenshots/FilterFunctie.gif" width="720"/>
 
 ### Favorietfunctie (GIF)
-<img src="docs/Screenshots/FavorietFunctie.gif" width="480"/>
+<img src="docs/Screenshots/FavorietFunctie.gif" width="720"/>
 
 ## Gebruikte bronnen
 - [CoinGecko API](https://www.coingecko.com/en/api)
