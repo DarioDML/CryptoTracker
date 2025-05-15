@@ -91,6 +91,9 @@ Hieronder een overzicht van de technische vereisten en waar deze in de code zijn
 ### Favorietfunctie (GIF)
 <img src="docs/Screenshots/FavorietFunctie.gif" width="720"/>
 
+### Dark/Light Mode (GIF)
+<img src="docs/Screenshots/ThemeSwitcher.gif" width="720"/>
+
 ## Gebruikte bronnen
 - [CoinGecko API](https://www.coingecko.com/en/api)
 - [MDN Web Docs](https://developer.mozilla.org/)
