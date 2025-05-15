@@ -69,13 +69,13 @@ Hieronder een overzicht van de technische vereisten en waar deze in de code zijn
 
 ## Screenshots
 ### Overzicht van de applicatie
-<img src="docs/Screenshots/Dashboard.png" width="128"/>
+<img src="docs/Screenshots/Dashboard.png" width="720"/>
 
 ### Filtermodaal
-<img src="docs/Screenshots/FilterMenu.jpeg" width="128"/>
+<img src="docs/Screenshots/FilterMenu.jpeg" width="720"/>
 
 ### Favorietenweergave
-<img src="docs/Screenshots/Dashboard_Favorites.png" width="128"/>
+<img src="docs/Screenshots/Dashboard_Favorites.png" width="720"/>
 
 ## Gebruikte bronnen
 - [CoinGecko API](https://www.coingecko.com/en/api)
