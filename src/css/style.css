@@ -149,7 +149,7 @@ body {
 }
 
 [data-theme="dark"] .modern-input {
-  border: 2px solid var (--text-dark);
+  border: 2px solid var(--text-dark);
   background-color: var(--background-dark);
   color: var(--text-dark);
 }
@@ -453,8 +453,7 @@ html {
 @media (max-width: 768px) {
   #crypto-table {
     font-size: 0.9rem; /* Verklein de tekst voor kleinere schermen */
-    max-width: 100vw; /* Zorg dat de tabel nooit breder is dan het scherm */
-    width: 100vw; /* Forceer volledige schermbreedte */
+    width: 100%; /* Forceer volledige schermbreedte */
     overflow-x: auto;
     box-sizing: border-box;
   }
@@ -476,6 +475,7 @@ html {
   }
 
   .header {
+    max-width: 100%; /* Zorg ervoor dat de header de volledige breedte gebruikt */
     flex-direction: column; /* Stapel de header-items verticaal */
     align-items: center;
   }
@@ -490,7 +490,7 @@ html {
   }
 
   .modern-input {
-    width: 100%; /* Zorg ervoor dat de zoekbalk de volledige breedte gebruikt */
+    width: 80%; /* Zorg ervoor dat de zoekbalk de volledige breedte gebruikt */
   }
 
   .footer-banner {
