@@ -452,6 +452,54 @@ html {
 /* Responsive design voor kleinere schermen */
 @media (max-width: 768px) {
   #crypto-table {
+    width: 100%;
+    table-layout: fixed;
+  }
+  #crypto-table th:nth-child(1),
+  #crypto-table td:nth-child(1) {
+    width: 5%;
+    min-width: 5%;
+    max-width: 5%;
+  }
+  #crypto-table th:nth-child(2),
+  #crypto-table td:nth-child(2) {
+    width: 40%;
+    min-width: 40%;
+    max-width: 40%;
+    /* white-space: nowrap; */
+    /* overflow: hidden; */
+    text-overflow: ellipsis;
+  }
+  #crypto-table th:nth-child(3),
+  #crypto-table td:nth-child(3) {
+    width: 20%;
+    min-width: 20%;
+    max-width: 20%;
+  }
+  #crypto-table th:nth-child(4),
+  #crypto-table td:nth-child(4) {
+    width: 20%;
+    min-width: 20%;
+    max-width: 20%;
+  }
+  #crypto-table th:nth-child(8),
+  #crypto-table td:nth-child(8) {
+    width: 15%;
+    min-width: 15%;
+    max-width: 15%;
+    text-align: center;         /* Zorg dat de inhoud gecentreerd is */
+    vertical-align: middle;     /* Verticaal centreren */
+  }
+
+  #crypto-table td:nth-child(8) .favorite-icon {
+    justify-content: center;    /* Flexbox centrering */
+    align-items: center;
+    display: flex;
+    margin: 0 auto;             /* Extra horizontaal centreren */
+    float: none;                /* Zorg dat float niet in de weg zit */
+  }
+
+  #crypto-table {
     font-size: 0.9rem; /* Verklein de tekst voor kleinere schermen */
     width: 100%; /* Forceer volledige schermbreedte */
     overflow-x: auto;
