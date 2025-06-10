@@ -9,6 +9,9 @@ CryptoTracker is een interactieve single-page webapplicatie waarmee gebruikers l
 ## Gebruikte API + link
 De applicatie maakt gebruik van de [CoinGecko API](https://www.coingecko.com/en/api) om live cryptocurrency-data op te halen (`src/js/api.js`). Deze API biedt uitgebreide informatie over cryptocurrencies, zoals prijzen, marktkapitalisatie, volume en meer.
 
+## 🌐 Live demo
+Bekijk de live versie hier: [![Live Demo](https://img.shields.io/badge/demo-online-brightgreen)](https://dariodml.github.io/CryptoTracker/)
+
 ## Voor elk technisch concept: waar en hoe toegepast
 Hieronder een overzicht van de technische vereisten en waar deze in de code zijn toegepast:
 
